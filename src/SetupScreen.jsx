@@ -21,7 +21,7 @@ export default function SetupScreen({ initialGifts, onStart }) {
     if (!trimmed) return
     if (!q || q < 1) return
     if (gifts.some((g) => g.name.toLowerCase() === trimmed.toLowerCase())) {
-      setError('Phan qua nay da ton tai!')
+      setError('Phần quà này đã tồn tại!')
       return
     }
 
@@ -54,14 +54,14 @@ export default function SetupScreen({ initialGifts, onStart }) {
 
   return (
     <div className="screen active">
-      <h1>Vong Quay May Man</h1>
+      <h1>Vòng Quay May Mắn</h1>
       <div className="container">
         <div className="card">
-          <h2>Them phan qua</h2>
+          <h2>Thêm phần quà</h2>
           <div className="add-form">
             <input
               type="text"
-              placeholder="Ten phan qua"
+              placeholder="Tên phần quà"
               maxLength={30}
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -69,7 +69,7 @@ export default function SetupScreen({ initialGifts, onStart }) {
             />
             <input
               type="number"
-              placeholder="So luong"
+              placeholder="Số lượng"
               min={1}
               max={9999}
               value={qty}
@@ -77,15 +77,15 @@ export default function SetupScreen({ initialGifts, onStart }) {
               onKeyDown={handleKeyDown}
             />
             <button className="btn-add" onClick={addGift}>
-              + Them
+              + Thêm
             </button>
           </div>
         </div>
 
         <div className="card">
-          <h2>Danh sach phan qua</h2>
+          <h2>Danh sách phần quà</h2>
           {gifts.length === 0 ? (
-            <p className="empty-text">Chua co phan qua nao</p>
+            <p className="empty-text">Chưa có phần quà nào</p>
           ) : (
             gifts.map((g, i) => (
               <div key={i} className="gift-item" style={{ borderLeftColor: g.color }}>
@@ -95,34 +95,34 @@ export default function SetupScreen({ initialGifts, onStart }) {
                   <span className="gift-qty">x{g.total}</span>
                 </div>
                 <button className="btn-danger" onClick={() => removeGift(i)}>
-                  Xoa
+                  Xóa
                 </button>
               </div>
             ))
           )}
           <div className="total-bar">
             <span>
-              Tong phan qua: <strong>{totalGifts}</strong>
+              Tổng phần quà: <strong>{totalGifts}</strong>
             </span>
           </div>
         </div>
 
         <div className="card">
-          <h2>Cai dat luot quay</h2>
+          <h2>Cài đặt lượt quay</h2>
           <div className="spins-setting">
             <input
               type="number"
-              placeholder="Tong so luot quay"
+              placeholder="Tổng số lượt quay"
               min={1}
               max={99999}
               value={totalSpins}
               onChange={(e) => setTotalSpins(e.target.value)}
             />
             <p className="hint">
-              Toi thieu bang tong phan qua ({totalGifts}). Phan du se la luot "Khong trung".
+              Tối thiểu bằng tổng phần quà ({totalGifts}). Phần dư sẽ là lượt "Không trúng".
             </p>
             <p className="no-win-display">
-              Luot khong trung: <strong>{noWinCount}</strong>
+              Lượt không trúng: <strong>{noWinCount}</strong>
             </p>
           </div>
         </div>
@@ -130,7 +130,7 @@ export default function SetupScreen({ initialGifts, onStart }) {
         {error && <p className="error-msg">{error}</p>}
         <div className="start-area">
           <button className="btn-primary" disabled={!canStart} onClick={handleStart}>
-            Bat dau quay!
+            Bắt đầu quay!
           </button>
         </div>
       </div>
