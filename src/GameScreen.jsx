@@ -49,7 +49,7 @@ export default function GameScreen({
 
   return (
     <div className="game-fullscreen">
-      <img className="brand-logo" src="/simplifydalat_logo.webp" alt="Simplify Dalat" />
+      <img className="brand-logo" src={`${import.meta.env.BASE_URL}simplifydalat_logo.webp`} alt="Simplify Dalat" />
 
       <button className="admin-toggle" onClick={onAdmin} title="Cài đặt">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
